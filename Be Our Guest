@@ -1,0 +1,63 @@
+#include <cs50.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string hotel_vacancies = GetString();
+    
+    char* token = strtok(hotel_vacancies," ");
+    int i = 0;
+    int rooms_floors[50];
+    string rows;
+    
+    while(token != NULL)
+    {
+        rooms_floors[i] = atoi(token);
+        //printf("%d",rooms_floors[i]);
+        token = strtok(NULL," ");
+        i = i + 1;
+    }
+    
+    int count = 0;
+    int max = 0;
+    
+    for(int i=0;i<rooms_floors[0];i++)
+    {
+        rows = GetString();
+        
+        for(int j=0;j<rooms_floors[1];j++)
+        {
+            //printf("%c", rows[j]);
+            
+            if(rows[j] == '0')
+            {
+                count = count + 1;
+                if(count > max)
+                {
+                    max = count;
+                }
+            }
+            else
+            {
+                count = 0;
+            }
+            
+        }
+    }
+    
+    //printf("%d", max);
+    int vacants = GetInt();
+    int ans;
+    
+    if(max == vacants)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    }
+    
+    printf("%d", ans);
+}
