@@ -1,0 +1,70 @@
+#include <cs50.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+string s=GetString();
+int i, j;
+int k = 0;
+char* result[20];
+    
+char* col1 = strtok(s, " ");
+    
+  while(col1 != NULL)
+  {
+      
+      result[k] = col1;
+      col1 = strtok(NULL, " ");
+      k = k + 1;
+   }
+
+int max = 0;
+string str;
+    
+for(int i=0;i<k;i++)
+{
+    if(strlen(result[i]) > max)
+    {
+       max = strlen(result[i]);
+       str = result[i];
+    }
+}
+
+for(int j=0;j<max+4;j++)
+{
+   printf("#"); 
+}
+    
+for(int l=0;l<k;l++)
+{
+   printf("\n");
+   printf("# %s", result[l]);
+    
+   for(int p=strlen(result[l])+2;p<max+4;p++)
+   {  
+      if(p == max+4 - 1)
+      {
+          printf("#"); 
+      }
+      else
+      {
+          printf(" ");
+      }
+      
+   }
+    
+   
+}
+    
+printf("\n");
+    
+for(int p=0;p<max+4;p++)
+{
+   
+   printf("#"); 
+}
+    
+    return 0;
+}
+
