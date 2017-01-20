@@ -1,0 +1,67 @@
+#include <cs50.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s;
+    s = GetString();
+    int count = 0;
+    char* word;
+
+    if(s == NULL)
+    {
+        printf("There is no box");
+    }
+    
+	word = strtok(s, " ");
+	
+	
+	while ((word) != NULL)
+    {
+       
+        int str_comp = strcmp(word,"cat");
+        
+        count = count + 1;
+        
+        int ones = count%10;
+        int tens = (count/10)%10;
+        
+        if(str_comp == 0)
+        {
+            if(tens == 1)
+            {
+                printf("The %s is the %dth item in the box", word, count);
+            }
+            else if(ones == 3)
+            {
+                printf("The %s is the %drd item in the box", word, count);
+            }
+            else if(ones == 1)
+            {
+                printf("The %s is the %dst item in the box", word, count);
+            }
+            else if(ones == 2)
+            {
+                printf("The %s is the %dnd item in the box", word, count);
+            }
+            else
+            {
+                printf("The %s is the %dth item in the box", word, count);
+            }
+            
+            break;
+        }
+       
+         word = strtok(NULL, " ");
+        
+        if(word == NULL)
+        {
+           printf("No cat yet");       
+        }
+        
+   
+    } 
+     
+	return 0;
+}
