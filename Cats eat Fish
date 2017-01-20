@@ -1,0 +1,37 @@
+#include <cs50.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int count = 0;
+    int starting_fishes = GetInt();
+    int days = GetInt();
+    
+    for(int i=1; i <=days;i++)
+    {
+       int fishes = GetInt();
+      
+       if(starting_fishes < fishes || starting_fishes == fishes)
+       {
+           printf("%d", count);
+           break;
+       }
+       
+       starting_fishes = starting_fishes - fishes;
+       
+       count = count + 1;
+       
+       if(i == days && starting_fishes > 0)
+       {
+           printf("Happy Cat!");
+           break;
+       }
+        
+       
+    }
+    
+    
+    
+    return 0;
+}
